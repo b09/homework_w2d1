@@ -31,3 +31,39 @@ class TestCodeclanStudents < Minitest::Test
   end
 
 end
+
+class TestTeams < Minitest::Test
+
+  def test_team_getters
+  team = Teams.new("The Cheezesteaks", ["Jay","Keith","Dave", "Val"], "Santa Claus")
+  assert_equal("The Cheezesteaks", team.team_name)
+  assert_equal(["Jay","Keith","Dave", "Val"], team.players)
+  assert_equal("Santa Claus", team.coach)
+  end
+
+  def test_new_coach
+    team = Teams.new("The Cheezesteaks", ["Jay","Keith","Dave", "Val"], "Santa Claus")
+    result = team.new_coach("Howard")
+    assert_equal("Howard", result)
+  end
+
+  def test_new_player
+    team = Teams.new("The Cheezesteaks", ["Jay","Keith","Dave", "Val"], "Santa Claus")
+    result = team.new_player("New Player")
+    assert_equal("New Player", team.players[0])
+  end
+
+  def test_team_result__won
+    team = Teams.new("The Cheezesteaks", ["Jay","Keith","Dave", "Val"], "Santa Claus")
+    result = team.team_result("won")
+    assert_equal(1, result)
+  end
+
+  def test_team_result__lost
+    team = Teams.new("The Cheezesteaks", ["Jay","Keith","Dave", "Val"], "Santa Claus")
+    result = team.team_result("lost")
+    non_win = "The team did not win, no team points have been added."
+    assert_equal(non_win, result)
+  end
+
+end
