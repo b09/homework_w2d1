@@ -48,7 +48,7 @@ class Teams
   end
 
 
-  def new_player(player_name)
+  def add_new_player(player_name)
     @players.unshift(player_name)
     return players
   end
@@ -56,9 +56,16 @@ class Teams
   def team_result(result)
     if result == "won"
       @points += 1
-      return @point 
+      return @points
     else
       return "The team did not win, no team points have been added."
+  end
+
+  def check_player(player)
+    if players.include?(player) == true
+      return "#{player} in on the team."
+    else
+      return "#{player} is not on the team."
   end
 
 end

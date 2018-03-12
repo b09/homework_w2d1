@@ -47,10 +47,22 @@ class TestTeams < Minitest::Test
     assert_equal("Howard", result)
   end
 
-  def test_new_player
+  def test_add_new_player
     team = Teams.new("The Cheezesteaks", ["Jay","Keith","Dave", "Val"], "Santa Claus")
-    result = team.new_player("New Player")
-    assert_equal("New Player", team.players[0])
+    result = team.add_new_player("New Player")
+    assert_equal(["New Player", "Jay","Keith","Dave", "Val"], result)
+  end
+
+  def test_check_player__yay
+    team = Teams.new("The Cheezesteaks", ["Jay","Keith","Dave", "Val"], "Santa Claus")
+    result = team.check_player("Keith")
+    assert_equal("Keith is on the team.", result)
+  end
+
+  def test_check_player__nay
+    team = Teams.new("The Cheezesteaks", ["Jay","Keith","Dave", "Val"], "Santa Claus")
+    result = team.check_player("Jim")
+    assert_equal("Jim is not on the team.", result)
   end
 
   def test_team_result__won
