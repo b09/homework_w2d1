@@ -58,7 +58,7 @@ class Teams
       @points += 1
       return @points
     else
-      return "The team did not win, no team points have been added."
+      p "The team did not win, no team points have been added."
   end
 
   def check_player(player)
